@@ -21,7 +21,7 @@ public class PantallaListaEnfermedades extends javax.swing.JFrame {
      */
     public PantallaListaEnfermedades() {
         initComponents();
-        listaenfermedad.setModel (Modelo);
+        //listaenfermedad.setModel (Modelo);
     }
 
     /**
