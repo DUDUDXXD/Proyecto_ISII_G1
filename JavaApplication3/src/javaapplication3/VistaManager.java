@@ -35,6 +35,15 @@ public class VistaManager {
         pantallaLogin.setVisible(true);
     }
     
+    public void mostrarPantallaEnfermeros() {
+        PantallaEnfermeros pantallaEnfermeros = new PantallaEnfermeros();
+        pantallaEnfermeros.setVisible(true);
+    }
+
+    public void mostrarPantallaMedicos() {
+        PantallaMedicos pantallaMedicos = new PantallaMedicos();
+        pantallaMedicos.setVisible(true);
+    }
     // Añadir más métodos para manejar otras pantallas si es necesario
 }
 

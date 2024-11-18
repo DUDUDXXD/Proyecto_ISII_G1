@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
  * @author mmati
  */
 public class PantallaLogin extends javax.swing.JFrame {
-
+    VistaManager vistaManager = new VistaManager();
     /**
      * Creates new form PantallaLogin
      */
@@ -124,18 +124,20 @@ public class PantallaLogin extends javax.swing.JFrame {
 
         if(user.isEmpty() || contrasegna.isEmpty()){
             JOptionPane.showMessageDialog(this, "Ningun campo debe estar vacio", "Aviso", JOptionPane.WARNING_MESSAGE);
-            //return;
+            return;
         }
 
         if((user.equals("Enfermero") || user.equals("enfermero"))){
-            PantallaEnfermeros pEnfermeros = new PantallaEnfermeros();
-            pEnfermeros.setVisible(true);
+            vistaManager.mostrarPantallaEnfermeros();
+            this.dispose();
+        }
+        else if((user.equals("Medico") || user.equals("medico"))){
+            vistaManager.mostrarPantallaMedicos();
             this.dispose();
         }
         else{
-            PantallaMedicos pMedicos = new PantallaMedicos();
-            pMedicos.setVisible(true);
-            this.dispose();
+            JOptionPane.showMessageDialog(this, "PERSONA NO AUTORIZADA", "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
         }
     }//GEN-LAST:event_entrarActionPerformed
 
