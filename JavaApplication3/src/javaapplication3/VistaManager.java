@@ -14,6 +14,7 @@ public class VistaManager {
         controlador = new Controlador(gestor);
 
         // Añadir datos de prueba al modelo
+        Modelo.GestorDeEnfermedades.precargarEnfermedades();
         Modelo.Paciente paciente1 = new Modelo.Paciente("Juan Perez", 65);
         Modelo.Enfermedad enfermedad1 = new Modelo.Enfermedad("Diabetes", "Insulina", "5ml", "Diario", true);
         paciente1.añadirEnfermedad(enfermedad1);
@@ -29,42 +30,6 @@ public class VistaManager {
         PantallaListaEnfermedades pantallaListaEnfermedades = new PantallaListaEnfermedades(controlador);
         pantallaListaEnfermedades.setVisible(true);
     }
-
-    public void mostrarPantallaLogin() {
-        PantallaLogin pantallaLogin = new PantallaLogin();
-        pantallaLogin.setVisible(true);
-    }
     
-    public void mostrarPantallaEnfermeros() {
-        PantallaEnfermeros pantallaEnfermeros = new PantallaEnfermeros();
-        pantallaEnfermeros.setVisible(true);
-    }
-
-    public void mostrarPantallaMedicos() {
-        PantallaMedicos pantallaMedicos = new PantallaMedicos();
-        pantallaMedicos.setVisible(true);
-    }
-
-    public void mostrarPantallaBuscarMedicamentos() {
-        PantallaBuscarMedicamentos pantallaBuscarMedicamentos = new PantallaBuscarMedicamentos();
-        pantallaBuscarMedicamentos.setVisible(true);
-    }
-
-    public void mostrarPantallaListadoBotiquin() {
-        PantallaListadoBotiquin pantallaListadoBotiquin = new PantallaListadoBotiquin();
-        pantallaListadoBotiquin.setVisible(true);
-    }
-
-    public void mostrarPantallaListaMedicamentos() {
-        PantallaListaMedicamentos pantallaListaMedicamentos = new PantallaListaMedicamentos();
-        pantallaListaMedicamentos.setVisible(true);
-    }
-
-    public void mostrarPantallaListaPacientes() {
-        PantallaListaPacientes pantallaListaPacientes = new PantallaListaPacientes();
-        pantallaListaPacientes.setVisible(true);
-    }
     // Añadir más métodos para manejar otras pantallas si es necesario
 }
-
-

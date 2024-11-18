@@ -35,13 +35,22 @@ public class Controlador {
         return pacientesConMedicacion;
     }
     
+    
+    
     public List<Modelo.Enfermedad> obtenerEnfermedadesPorNombre(String nombre){
-        List<Modelo.Enfermedad> enfermedades = new ArrayList<>();
-        for(Modelo.Enfermedad enfermedad : pac.getEnfermedades()) {
-            if(enfermedad.getNombre() == nombre){
-                enfermedades.add(enfermedad);
-            }
+//        List<Modelo.Enfermedad> enfermedades = new ArrayList<>();
+//        for(Modelo.Enfermedad enfermedad : pac.getEnfermedades()) {
+//            if(enfermedad.getNombre() == nombre){
+//                enfermedades.add(enfermedad);
+//            }
+//        }
+//        return enfermedades;
+        List<Modelo.Enfermedad> enfermedadesEncontradas = new ArrayList<>();
+    for (Modelo.Enfermedad enfermedad : Modelo.GestorDeEnfermedades.obtenerTodasLasEnfermedades()) {
+        if (enfermedad.getNombre().equalsIgnoreCase(nombre)) {
+            enfermedadesEncontradas.add(enfermedad);
         }
-        return enfermedades;
+    }
+    return enfermedadesEncontradas;
     }
 }

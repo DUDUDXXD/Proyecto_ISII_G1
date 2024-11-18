@@ -144,5 +144,21 @@ public class Modelo {
         }
     }
     
+    
+    public class GestorDeEnfermedades {
+    private static List<Enfermedad> enfermedades = new ArrayList<>();
+
+    // Método para inicializar enfermedades
+    public static void precargarEnfermedades() {
+        enfermedades.add(new Enfermedad("Gripe", "Paracetamol", "500mg", "2 veces al día", true));
+        enfermedades.add(new Enfermedad("Covid-19", "Antivirales", "200mg", "1 vez al día", true));
+        enfermedades.add(new Enfermedad("Migraña", "Ibuprofeno", "400mg", "1 vez cada 8 horas", false));
+        // Agrega más enfermedades según sea necesario
+    }
+
+    public static List<Enfermedad> obtenerTodasLasEnfermedades() {
+        return enfermedades;
+    }
+    }
    
 }

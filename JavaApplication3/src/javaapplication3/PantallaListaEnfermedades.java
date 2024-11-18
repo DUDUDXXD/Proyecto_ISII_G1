@@ -9,6 +9,7 @@ import java.util.List;
 import java.awt.*;
 import javax.swing.DefaultListModel;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
 /**
@@ -17,7 +18,6 @@ import javax.swing.table.TableModel;
  */
 public class PantallaListaEnfermedades extends javax.swing.JFrame {
     ArrayList Lista = new ArrayList ();
-    DefaultListModel Modelo = new DefaultListModel();
     String enfermedad;
     int contador = 0;
     private Controlador controlador;
@@ -115,12 +115,24 @@ public class PantallaListaEnfermedades extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
-        List<Modelo.Enfermedad> enfermedades = controlador.obtenerEnfermedadesPorNombre(textoenfermedad.getText());
-        for (Modelo.Enfermedad enfermedad : enfermedades){
-            agregarDatos(jTable1, 0, new Object[]{enfermedad.getNombre(), enfermedad.getMedicacion(), enfermedad.getDosis(), enfermedad.getFrecuencia(), enfermedad.tieneDosis()});
-        }
+        String nombreenfermedad = textoenfermedad.getText();
+        List<Modelo.Enfermedad> enfermedades = controlador.obtenerEnfermedadesPorNombre(nombreenfermedad);
+//        for (Modelo.Enfermedad enfermedad : enfermedades){
+//            agregarDatos(jTable1, 0, new Object[]{enfermedad.getNombre(), enfermedad.getMedicacion(), enfermedad.getDosis(), enfermedad.getFrecuencia(), enfermedad.tieneDosis()});
+//        }
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
         
-            
+        for(Modelo.Enfermedad enfermedad : enfermedades){
+            model.addRow(new Object[]{
+                enfermedad.getNombre(),
+                enfermedad.getMedicacion(),
+                enfermedad.getDosis(),
+                enfermedad.getFrecuencia(),
+                enfermedad.tieneDosis()
+            });
+        }
+  
     }//GEN-LAST:event_buscarActionPerformed
     
     public static void agregarDatos(JTable table, int row, Object[] data) {
