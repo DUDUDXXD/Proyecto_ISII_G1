@@ -44,6 +44,26 @@ public class VistaManager {
         PantallaMedicos pantallaMedicos = new PantallaMedicos();
         pantallaMedicos.setVisible(true);
     }
+
+    public void mostrarPantallaBuscarMedicamentos() {
+        PantallaBuscarMedicamentos pantallaBuscarMedicamentos = new PantallaBuscarMedicamentos();
+        pantallaBuscarMedicamentos.setVisible(true);
+    }
+
+    public void mostrarPantallaListadoBotiquin() {
+        PantallaListadoBotiquin pantallaListadoBotiquin = new PantallaListadoBotiquin();
+        pantallaListadoBotiquin.setVisible(true);
+    }
+
+    public void mostrarPantallaListaMedicamentos() {
+        PantallaListaMedicamentos pantallaListaMedicamentos = new PantallaListaMedicamentos();
+        pantallaListaMedicamentos.setVisible(true);
+    }
+
+    public void mostrarPantallaListaPacientes() {
+        PantallaListaPacientes pantallaListaPacientes = new PantallaListaPacientes();
+        pantallaListaPacientes.setVisible(true);
+    }
     // Añadir más métodos para manejar otras pantallas si es necesario
 }
 
