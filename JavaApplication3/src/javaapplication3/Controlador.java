@@ -13,6 +13,8 @@ import java.util.List;
  */
 public class Controlador {
     private Modelo.GestorDePacientes gestor;
+    private Modelo.Enfermedad enf;
+    private Modelo.Paciente pac;
     public Controlador(Modelo.GestorDePacientes gestor) {
         this.gestor = gestor;
     }
@@ -31,5 +33,15 @@ public class Controlador {
             }
         }
         return pacientesConMedicacion;
+    }
+    
+    public List<Modelo.Enfermedad> obtenerEnfermedadesPorNombre(String nombre){
+        List<Modelo.Enfermedad> enfermedades = new ArrayList<>();
+        for(Modelo.Enfermedad enfermedad : pac.getEnfermedades()) {
+            if(enfermedad.getNombre() == nombre){
+                enfermedades.add(enfermedad);
+            }
+        }
+        return enfermedades;
     }
 }

@@ -24,7 +24,12 @@ public class VistaManager {
         PantallaMedicamentoPaciente pantallaMedicamentoPaciente = new PantallaMedicamentoPaciente(controlador);
         pantallaMedicamentoPaciente.setVisible(true);
     }
-
+    
+    public void mostrarPantallaListaEnfermedades() {
+        PantallaListaEnfermedades pantallaListaEnfermedades = new PantallaListaEnfermedades(controlador);
+        pantallaListaEnfermedades.setVisible(true);
+    }
+    
     // Añadir más métodos para manejar otras pantallas si es necesario
 }
 

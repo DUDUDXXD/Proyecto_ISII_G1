@@ -5,7 +5,11 @@
 package javaapplication3;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.awt.*;
 import javax.swing.DefaultListModel;
+import javax.swing.JTable;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -16,10 +20,12 @@ public class PantallaListaEnfermedades extends javax.swing.JFrame {
     DefaultListModel Modelo = new DefaultListModel();
     String enfermedad;
     int contador = 0;
+    private Controlador controlador;
     /**
      * Creates new form PantallaListaEnfermedades
      */
-    public PantallaListaEnfermedades() {
+    public PantallaListaEnfermedades(Controlador controlador) {
+        this.controlador = controlador;
         initComponents();
         //listaenfermedad.setModel (Modelo);
     }
@@ -60,9 +66,11 @@ public class PantallaListaEnfermedades extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Gripe", "Antivirales", "70 mg", "2 veces", "Sí, viral"},
-                {"Neumonía", "Antibióticos", "500 mg", "1 vez", "Sí, bacteriana"},
-                {"Asma", "Inhalador", "2 inhalaciones", "Según síntomas", "No"},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
                 {null, null, null, null, null}
             },
             new String [] {
@@ -107,9 +115,23 @@ public class PantallaListaEnfermedades extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
-        // TODO add your handling code here:
+        List<Modelo.Enfermedad> enfermedades = controlador.obtenerEnfermedadesPorNombre(textoenfermedad.getText());
+        for (Modelo.Enfermedad enfermedad : enfermedades){
+            agregarDatos(jTable1, 0, new Object[]{enfermedad.getNombre(), enfermedad.getMedicacion(), enfermedad.getDosis(), enfermedad.getFrecuencia(), enfermedad.tieneDosis()});
+        }
+        
+            
     }//GEN-LAST:event_buscarActionPerformed
+    
+    public static void agregarDatos(JTable table, int row, Object[] data) {
+        if (data.length != table.getColumnCount()) {
+            throw new IllegalArgumentException("El número de datos no coincide con las columnas de la tabla.");
+        }
 
+        for (int col = 0; col < data.length; col++) {
+            table.setValueAt(data[col], row, col);
+        }
+    }
     private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_RegistrarActionPerformed
