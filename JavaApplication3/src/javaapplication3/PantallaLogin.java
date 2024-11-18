@@ -4,6 +4,8 @@
  */
 package javaapplication3;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author mmati
@@ -30,7 +32,7 @@ public class PantallaLogin extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         usuario = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        contrasegna = new javax.swing.JPasswordField();
+        jPasswordField1 = new javax.swing.JPasswordField();
         entrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -47,6 +49,8 @@ public class PantallaLogin extends javax.swing.JFrame {
         });
 
         jLabel2.setText("Contraseña:");
+
+        jPasswordField1.setText("jPasswordField1");
 
         entrar.setText("Entrar");
         entrar.addActionListener(new java.awt.event.ActionListener() {
@@ -73,9 +77,9 @@ public class PantallaLogin extends javax.swing.JFrame {
                         .addGap(106, 106, 106)
                         .addComponent(jLabel2)
                         .addGap(46, 46, 46)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(usuario, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
-                    .addComponent(contrasegna))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(96, 96, 96))
         );
         jPanel1Layout.setVerticalGroup(
@@ -88,7 +92,7 @@ public class PantallaLogin extends javax.swing.JFrame {
                 .addGap(52, 52, 52)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(contrasegna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(53, 53, 53)
                 .addComponent(entrar)
                 .addGap(23, 23, 23))
@@ -112,8 +116,27 @@ public class PantallaLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_usuarioActionPerformed
 
-    private void entrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entrarActionPerformed
+    private void entrarActionPerformed(java.awt.event.ActionEvent evt) {
+        //GEN-FIRST:event_entrarActionPerformed
+        String user = usuario.getText();
+        char[] contr = jPasswordField1.getPassword();
+        String contrasegna = new String(contr);
 
+        if(user.isEmpty() || contrasegna.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Ningun campo debe estar vacio", "Aviso", JOptionPane.WARNING_MESSAGE);
+            //return;
+        }
+
+        if((user.equals("Enfermero") || user.equals("enfermero"))){
+            PantallaEnfermeros pEnfermeros = new PantallaEnfermeros();
+            pEnfermeros.setVisible(true);
+            this.dispose();
+        }
+        else{
+            PantallaMedicos pMedicos = new PantallaMedicos();
+            pMedicos.setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_entrarActionPerformed
 
     /**
@@ -122,11 +145,11 @@ public class PantallaLogin extends javax.swing.JFrame {
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPasswordField contrasegna;
     private javax.swing.JButton entrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField usuario;
     // End of variables declaration//GEN-END:variables
 }

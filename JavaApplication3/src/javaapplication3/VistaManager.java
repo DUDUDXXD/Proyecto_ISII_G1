@@ -29,6 +29,11 @@ public class VistaManager {
         PantallaListaEnfermedades pantallaListaEnfermedades = new PantallaListaEnfermedades(controlador);
         pantallaListaEnfermedades.setVisible(true);
     }
+
+    public void mostrarPantallaLogin() {
+        PantallaLogin pantallaLogin = new PantallaLogin();
+        pantallaLogin.setVisible(true);
+    }
     
     // Añadir más métodos para manejar otras pantallas si es necesario
 }
