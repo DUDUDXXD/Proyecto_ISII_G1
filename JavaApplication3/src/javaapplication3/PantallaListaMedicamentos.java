@@ -9,7 +9,7 @@ package javaapplication3;
  * @author mmati
  */
 public class PantallaListaMedicamentos extends javax.swing.JFrame {
-
+    VistaManager vistaManager = new VistaManager();
     /**
      * Creates new form PantallaListaMedicamentos
      */

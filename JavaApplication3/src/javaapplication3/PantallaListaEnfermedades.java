@@ -17,6 +17,7 @@ import javax.swing.table.TableModel;
  * @author pmare
  */
 public class PantallaListaEnfermedades extends javax.swing.JFrame {
+    VistaManager vistaManager = new VistaManager();
     ArrayList Lista = new ArrayList ();
     String enfermedad;
     int contador = 0;

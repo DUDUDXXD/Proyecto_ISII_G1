@@ -9,7 +9,7 @@ package javaapplication3;
  * @author inesjasopernod
  */
 public class PantallaListadoBotiquin extends javax.swing.JFrame {
-
+    VistaManager vistaManager = new VistaManager();
     /**
      * Creates new form PantallaListadoBotiquin
      */
