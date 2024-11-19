@@ -42,28 +42,6 @@
           <Color blue="e5" green="e5" red="cb" type="rgb"/>
         </Property>
       </Properties>
-<<<<<<< HEAD
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Medicamentos"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton3">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Enfermedades"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
-      </Events>
-    </Component>
-=======
 
       <Layout>
         <DimensionLayout dim="0">
@@ -135,6 +113,5 @@
         </Component>
       </SubComponents>
     </Container>
->>>>>>> refs/remotes/origin/main
   </SubComponents>
 </Form>

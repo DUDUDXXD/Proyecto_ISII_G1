@@ -115,7 +115,7 @@ public class PantallaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_usuarioActionPerformed
 
     private void entrarActionPerformed(java.awt.event.ActionEvent evt) {
-//GEN-FIRST:event_entrarActionPerformed
+        //GEN-FIRST:event_entrarActionPerformed
         String user = usuario.getText();
         char[] contr = jPasswordField1.getPassword();
         String contrasegna = new String(contr);
@@ -127,11 +127,11 @@ public class PantallaLogin extends javax.swing.JFrame {
 
         if((user.equals("Enfermero") || user.equals("enfermero"))){
             vistaManager.mostrarPantallaEnfermeros();
-            //this.dispose();
+            this.dispose();
         }
         else if((user.equals("Medico") || user.equals("medico"))){
             vistaManager.mostrarPantallaMedicos();
-            //this.dispose();
+            this.dispose();
         }
         else{
             JOptionPane.showMessageDialog(this, "PERSONA NO AUTORIZADA", "Aviso", JOptionPane.WARNING_MESSAGE);

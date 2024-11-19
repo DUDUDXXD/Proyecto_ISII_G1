@@ -67,11 +67,9 @@ public class PantallaEnfermeros extends javax.swing.JFrame {
                     .addComponent(BotonInventario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(136, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(135, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(BotonInventario, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
-                    .addComponent(BotonMedPac, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(128, 128, 128))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Salir)
+                .addGap(21, 21, 21))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,12 +99,12 @@ public class PantallaEnfermeros extends javax.swing.JFrame {
 
     private void BotonMedPacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonMedPacActionPerformed
         vistaManager.mostrarPantallaMedicamentoPaciente();
-        //this.dispose();
+        this.dispose();
     }//GEN-LAST:event_BotonMedPacActionPerformed
 
     private void BotonInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonInventarioActionPerformed
         vistaManager.mostrarPantallaListadoBotiquin();
-        //this.dispose();
+        this.dispose();
     }//GEN-LAST:event_BotonInventarioActionPerformed
 
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
