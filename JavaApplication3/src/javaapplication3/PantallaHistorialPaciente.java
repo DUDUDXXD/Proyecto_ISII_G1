@@ -20,8 +20,8 @@ public class PantallaHistorialPaciente extends javax.swing.JFrame {
     /**
      * Creates new form PantallaHistorialPaciente
      */
-    public PantallaHistorialPaciente(Paciente paciente) {
-        this.paciente = paciente;
+    public PantallaHistorialPaciente() {
+        //this.paciente = paciente;
         initComponents();
     }
 
@@ -45,7 +45,8 @@ public class PantallaHistorialPaciente extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Nombre.setText(paciente.getNombre());
+        //Nombre.setText(paciente.getNombre());
+        Nombre.setText("Matias");
 
         Historial.setText("Historial:");
 

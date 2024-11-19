@@ -106,10 +106,10 @@ public class PantallaListaPacientes extends javax.swing.JFrame {
 
     private void VerDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerDetallesActionPerformed
         //FALTA SELECCIONAR PACIENTE Y VER HISTORIAL DE PACIENTE SELECCIONADO
-        int seleccion = TablaListaPacientes.getSelectedRow();
+        //int seleccion = TablaListaPacientes.getSelectedRow();
         Paciente paciente = new Paciente();
-        GestorDePacientes gPacientes = new GestorDePacientes();
-
+        //GestorDePacientes gPacientes = new GestorDePacientes();
+/*
         List<Paciente> pacientes;
         pacientes = gPacientes.obtenerTodosLosPacientes();
         
@@ -117,7 +117,8 @@ public class PantallaListaPacientes extends javax.swing.JFrame {
             paciente = pacientes.get(seleccion);
         }
         System.out.println(paciente.getNombre());
-        vistaManager.mostrarPantallaHistorialPaciente(paciente);
+        */
+        vistaManager.mostrarPantallaHistorialPaciente();
         this.dispose();
     }//GEN-LAST:event_VerDetallesActionPerformed
 
