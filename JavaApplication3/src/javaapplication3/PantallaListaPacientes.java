@@ -27,27 +27,27 @@ public class PantallaListaPacientes extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TablaListaPacientes = new javax.swing.JTable();
         Salir = new javax.swing.JButton();
         VerDetalles = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TablaListaPacientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"Matias", "Moncho", "Ronda", "13", "Nada"},
-                {null, null, "", null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
+                {"Iman", "Mokhlissi", "Rati", "14", "Dolor"},
+                {"Lucía", "Sánchez", "Gómez", "15", "Fiebre"},
+                {"Jorge", "Pérez", "Lozano", "16", "Dolor de cabeza"},
+                {"Aisha", "Khan", "Ibrahim", "17", "Tos"},
+                {"Daniel", "Ramírez", "Mendoza", "18", "Nada"},
                 {null, null, null, null, null}
             },
             new String [] {
                 "Nombre", "Apellido 1", "Apellido 2", "Habitación", "Síntomas"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(TablaListaPacientes);
 
         Salir.setText("Salir");
         Salir.addActionListener(new java.awt.event.ActionListener() {
@@ -100,6 +100,7 @@ public class PantallaListaPacientes extends javax.swing.JFrame {
 
     private void VerDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerDetallesActionPerformed
         //FALTA SELECCIONAR PACIENTE Y VER HISTORIAL DE PACIENTE SELECCIONADO
+        int seleccion = TablaListaPacientes.getSelectedRow();
         vistaManager.mostrarPantallaHistorialPaciente();
         this.dispose();
     }//GEN-LAST:event_VerDetallesActionPerformed
@@ -108,8 +109,8 @@ public class PantallaListaPacientes extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Salir;
+    private javax.swing.JTable TablaListaPacientes;
     private javax.swing.JButton VerDetalles;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
