@@ -9,7 +9,7 @@ package javaapplication3;
  * @author pmare
  */
 public class PantallaBuscarMedicamentos extends javax.swing.JFrame {
-
+    VistaManager vistaManager = new VistaManager();
     /**
      * Creates new form PantallaBuscarMedicamentos
      */
@@ -63,6 +63,11 @@ public class PantallaBuscarMedicamentos extends javax.swing.JFrame {
         jButton2.setText("Ok");
 
         jButton3.setText("Salir");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -110,6 +115,11 @@ public class PantallaBuscarMedicamentos extends javax.swing.JFrame {
     private void textomedicamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textomedicamentosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textomedicamentosActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        vistaManager.mostrarPantallaMedicos();
+        this.dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
 

@@ -21,49 +21,54 @@ public class VistaManager {
         gestor.añadirPaciente(paciente1);
     }
 
-    public void mostrarPantallaMedicamentoPaciente() {
+    public void mostrarPantallaMedicamentoPaciente(){
         PantallaMedicamentoPaciente pantallaMedicamentoPaciente = new PantallaMedicamentoPaciente(controlador);
         pantallaMedicamentoPaciente.setVisible(true);
     }
     
-    public void mostrarPantallaListaEnfermedades() {
+    public void mostrarPantallaListaEnfermedades(){
         PantallaListaEnfermedades pantallaListaEnfermedades = new PantallaListaEnfermedades(controlador);
         pantallaListaEnfermedades.setVisible(true);
     }
 
-    public void mostrarPantallaLogin() {
+    public void mostrarPantallaLogin(){
         PantallaLogin pantallaLogin = new PantallaLogin();
         pantallaLogin.setVisible(true);
     }
     
-    public void mostrarPantallaEnfermeros() {
+    public void mostrarPantallaEnfermeros(){
         PantallaEnfermeros pantallaEnfermeros = new PantallaEnfermeros();
         pantallaEnfermeros.setVisible(true);
     }
 
-    public void mostrarPantallaMedicos() {
+    public void mostrarPantallaMedicos(){
         PantallaMedicos pantallaMedicos = new PantallaMedicos();
         pantallaMedicos.setVisible(true);
     }
 
-    public void mostrarPantallaBuscarMedicamentos() {
+    public void mostrarPantallaBuscarMedicamentos(){
         PantallaBuscarMedicamentos pantallaBuscarMedicamentos = new PantallaBuscarMedicamentos();
         pantallaBuscarMedicamentos.setVisible(true);
     }
 
-    public void mostrarPantallaListadoBotiquin() {
+    public void mostrarPantallaListadoBotiquin(){
         PantallaListadoBotiquin pantallaListadoBotiquin = new PantallaListadoBotiquin();
         pantallaListadoBotiquin.setVisible(true);
     }
 
-    public void mostrarPantallaListaMedicamentos() {
+    public void mostrarPantallaListaMedicamentos(){
         PantallaListaMedicamentos pantallaListaMedicamentos = new PantallaListaMedicamentos();
         pantallaListaMedicamentos.setVisible(true);
     }
 
-    public void mostrarPantallaListaPacientes() {
+    public void mostrarPantallaListaPacientes(){
         PantallaListaPacientes pantallaListaPacientes = new PantallaListaPacientes();
         pantallaListaPacientes.setVisible(true);
+    }
+
+    public void mostrarPantallaHistorialPaciente(){
+        PantallaHistorialPaciente pantallaHistorialPaciente = new PantallaHistorialPaciente();
+        pantallaHistorialPaciente.setVisible(true);
     }
     // Añadir más métodos para manejar otras pantallas si es necesario
 }
