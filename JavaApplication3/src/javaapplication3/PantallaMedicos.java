@@ -30,6 +30,7 @@ public class PantallaMedicos extends javax.swing.JFrame {
         ListaPacientes = new javax.swing.JButton();
         Medicamentos = new javax.swing.JButton();
         Enfermedades = new javax.swing.JButton();
+        Salir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,6 +57,13 @@ public class PantallaMedicos extends javax.swing.JFrame {
             }
         });
 
+        Salir.setText("Salir");
+        Salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SalirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -67,6 +75,10 @@ public class PantallaMedicos extends javax.swing.JFrame {
                     .addComponent(Enfermedades, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ListaPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(111, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Salir)
+                .addGap(14, 14, 14))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -77,7 +89,9 @@ public class PantallaMedicos extends javax.swing.JFrame {
                 .addComponent(Enfermedades)
                 .addGap(29, 29, 29)
                 .addComponent(Medicamentos)
-                .addGap(70, 70, 70))
+                .addGap(18, 18, 18)
+                .addComponent(Salir)
+                .addGap(23, 23, 23))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -97,16 +111,24 @@ public class PantallaMedicos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ListaPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListaPacientesActionPerformed
-        // TODO add your handling code here:
+        vistaManager.mostrarPantallaListaPacientes();
+        this.dispose();
     }//GEN-LAST:event_ListaPacientesActionPerformed
 
     private void MedicamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MedicamentosActionPerformed
-        // TODO add your handling code here:
+        vistaManager.mostrarPantallaListaMedicamentos();
+        this.dispose();
     }//GEN-LAST:event_MedicamentosActionPerformed
 
     private void EnfermedadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnfermedadesActionPerformed
-        // TODO add your handling code here:
+        vistaManager.mostrarPantallaListaEnfermedades();
+        this.dispose();
     }//GEN-LAST:event_EnfermedadesActionPerformed
+
+    private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
+        vistaManager.mostrarPantallaLogin();
+        this.dispose();
+    }//GEN-LAST:event_SalirActionPerformed
 
 
 
@@ -114,6 +136,7 @@ public class PantallaMedicos extends javax.swing.JFrame {
     private javax.swing.JButton Enfermedades;
     private javax.swing.JButton ListaPacientes;
     private javax.swing.JButton Medicamentos;
+    private javax.swing.JButton Salir;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
