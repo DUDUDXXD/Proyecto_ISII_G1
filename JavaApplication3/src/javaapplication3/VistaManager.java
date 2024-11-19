@@ -4,18 +4,23 @@
  */
 package javaapplication3;
 
+import javaapplication3.Modelo.Paciente;
+
 public class VistaManager {
     private Modelo.GestorDePacientes gestor;
     private Controlador controlador;
+    Modelo modelo = new Modelo();
+    private Paciente paciente;
 
     public VistaManager() {
         // Inicializar el modelo y el controlador
         gestor = new Modelo.GestorDePacientes();
         controlador = new Controlador(gestor);
+        paciente = new Paciente();
 
         // Añadir datos de prueba al modelo
         Modelo.GestorDeEnfermedades.precargarEnfermedades();
-        Modelo.Paciente paciente1 = new Modelo.Paciente("Juan Perez", 65);
+        Modelo.Paciente paciente1 = new Modelo.Paciente("Juan Perez", 65, 13, "Nada");
         Modelo.Enfermedad enfermedad1 = new Modelo.Enfermedad("Diabetes", "Insulina", "5ml", "Diario", true);
         paciente1.añadirEnfermedad(enfermedad1);
         gestor.añadirPaciente(paciente1);
@@ -66,8 +71,8 @@ public class VistaManager {
         pantallaListaPacientes.setVisible(true);
     }
 
-    public void mostrarPantallaHistorialPaciente(){
-        PantallaHistorialPaciente pantallaHistorialPaciente = new PantallaHistorialPaciente();
+    public void mostrarPantallaHistorialPaciente(Paciente paciente){
+        PantallaHistorialPaciente pantallaHistorialPaciente = new PantallaHistorialPaciente(paciente);
         pantallaHistorialPaciente.setVisible(true);
     }
     // Añadir más métodos para manejar otras pantallas si es necesario

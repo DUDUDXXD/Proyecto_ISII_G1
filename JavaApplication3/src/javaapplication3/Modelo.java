@@ -13,15 +13,25 @@ public class Modelo {
     
 
     static class Paciente {
-        private String nombre;
-        private int edad;
+        private String nombre, sintom;
+        private int edad, hab;
         private List<Enfermedad> enfermedades;
 
-        public Paciente(String nombre, int edad) {
+        public Paciente() {
+            this.nombre = "Sin asignar";
+            this.edad = 0;
+            this.hab = 0;
+            this.sintom = "Sin asignar";
+        }
+
+        public Paciente(String nombre, int edad, int hab, String sintom) {
             this.nombre = nombre;
             this.edad = edad;
+            this.hab = hab;
+            this.sintom = sintom;
             this.enfermedades = new ArrayList<>();
         }
+
         public void añadirEnfermedad(Enfermedad enfermedad) {
             this.enfermedades.add(enfermedad);
         }
@@ -56,6 +66,14 @@ public class Modelo {
         private String dosis;
         private String frecuencia;
         private boolean tieneDosis;
+
+        public Enfermedad(){
+            this.nombre = "Sin asignar";
+            this.medicacion = "Sin asignar";
+            this.dosis = "Sin asignar";
+            this.frecuencia = "Sin asignar";
+            this.tieneDosis = false;
+        }
 
         public Enfermedad(String nombre, String medicacion, String dosis, String frecuencia, boolean tieneDosis) {
             this.nombre = nombre;
@@ -105,19 +123,19 @@ public class Modelo {
         }
     }
     static class GestorDePacientes {
-        private List<Paciente> pacientes;
+        private static List<Paciente> pacientes;
 
         public GestorDePacientes() {
-            this.pacientes = new ArrayList<>();
+            //this.pacientes = new ArrayList<>();
             
              // Pacientes defecto
-            Paciente paciente1 = new Paciente("Juan Perez", 65);
+            Paciente paciente1 = new Paciente("Juan Perez", 65, 13, "Nada");
             paciente1.añadirEnfermedad(new Enfermedad("Diabetes", "Insulina", "5ml", "Diario", true));
 
-            Paciente paciente2 = new Paciente("Maria Garcia", 70);
+            Paciente paciente2 = new Paciente("Maria Garcia", 70, 14, "Dolor");
             paciente2.añadirEnfermedad(new Enfermedad("Hipertensión", "Enalapril", "10mg", "Cada 12 horas", true));
 
-            Paciente paciente3 = new Paciente("Carlos Ruiz", 55);
+            Paciente paciente3 = new Paciente("Carlos Ruiz", 55, 15, "Fiebre");
             paciente3.añadirEnfermedad(new Enfermedad("Asma", "Salbutamol", "2 inhalaciones", "Cada 8 horas", true));
 
             // Añadir los pacientes a la lista
@@ -139,7 +157,7 @@ public class Modelo {
             return null; // Devuelve null si no se encuentra el paciente
         }
 
-        public List<Paciente> obtenerTodosLosPacientes() {
+        public static List<Paciente> obtenerTodosLosPacientes() {
             return pacientes;
         }
     }

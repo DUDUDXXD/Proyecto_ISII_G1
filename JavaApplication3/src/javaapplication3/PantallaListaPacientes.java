@@ -4,12 +4,19 @@
  */
 package javaapplication3;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javaapplication3.Modelo.GestorDePacientes;
+import javaapplication3.Modelo.Paciente;
+
 /**
  *
  * @author mmati
  */
 public class PantallaListaPacientes extends javax.swing.JFrame {
     VistaManager vistaManager = new VistaManager();
+    Modelo modelo = new Modelo();
     /**
      * Creates new form PantallaListaPacientes
      */
@@ -35,16 +42,15 @@ public class PantallaListaPacientes extends javax.swing.JFrame {
 
         TablaListaPacientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Matias", "Moncho", "Ronda", "13", "Nada"},
-                {"Iman", "Mokhlissi", "Rati", "14", "Dolor"},
-                {"Lucía", "Sánchez", "Gómez", "15", "Fiebre"},
-                {"Jorge", "Pérez", "Lozano", "16", "Dolor de cabeza"},
-                {"Aisha", "Khan", "Ibrahim", "17", "Tos"},
-                {"Daniel", "Ramírez", "Mendoza", "18", "Nada"},
-                {null, null, null, null, null}
+                {"Juan Perez", "13", "Nada"},
+                {"Maria Garcia", "14", "Dolor"},
+                {"Carlos Ruiz", "15", "Fiebre"},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Nombre", "Apellido 1", "Apellido 2", "Habitación", "Síntomas"
+                "Nombre", "Habitación", "Síntomas"
             }
         ));
         jScrollPane1.setViewportView(TablaListaPacientes);
@@ -101,7 +107,17 @@ public class PantallaListaPacientes extends javax.swing.JFrame {
     private void VerDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerDetallesActionPerformed
         //FALTA SELECCIONAR PACIENTE Y VER HISTORIAL DE PACIENTE SELECCIONADO
         int seleccion = TablaListaPacientes.getSelectedRow();
-        vistaManager.mostrarPantallaHistorialPaciente();
+        Paciente paciente = new Paciente();
+        GestorDePacientes gPacientes = new GestorDePacientes();
+
+        List<Paciente> pacientes;
+        pacientes = gPacientes.obtenerTodosLosPacientes();
+        
+        if(seleccion >= 0 && seleccion < pacientes.size()){
+            paciente = pacientes.get(seleccion);
+        }
+        System.out.println(paciente.getNombre());
+        vistaManager.mostrarPantallaHistorialPaciente(paciente);
         this.dispose();
     }//GEN-LAST:event_VerDetallesActionPerformed
 

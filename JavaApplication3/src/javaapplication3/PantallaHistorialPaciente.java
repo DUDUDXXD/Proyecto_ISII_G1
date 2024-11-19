@@ -6,6 +6,8 @@ package javaapplication3;
 
 import javax.swing.JOptionPane;
 
+import javaapplication3.Modelo.Paciente;
+
 /**
  *
  * @author inesjasopernod
@@ -13,10 +15,13 @@ import javax.swing.JOptionPane;
 public class PantallaHistorialPaciente extends javax.swing.JFrame {
 
     VistaManager vistaManager = new VistaManager();
+    Modelo modelo = new Modelo();
+    Paciente paciente = new Paciente();
     /**
      * Creates new form PantallaHistorialPaciente
      */
-    public PantallaHistorialPaciente() {
+    public PantallaHistorialPaciente(Paciente paciente) {
+        this.paciente = paciente;
         initComponents();
     }
 
@@ -30,8 +35,6 @@ public class PantallaHistorialPaciente extends javax.swing.JFrame {
     private void initComponents() {
 
         Nombre = new javax.swing.JLabel();
-        Apellido_1 = new javax.swing.JLabel();
-        Apellido_2 = new javax.swing.JLabel();
         Historial = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -42,11 +45,7 @@ public class PantallaHistorialPaciente extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Nombre.setText("Matías");
-
-        Apellido_1.setText("Moncho");
-
-        Apellido_2.setText("Ronda");
+        Nombre.setText(paciente.getNombre());
 
         Historial.setText("Historial:");
 
