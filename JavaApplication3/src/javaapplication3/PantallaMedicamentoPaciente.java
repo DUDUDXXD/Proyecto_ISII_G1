@@ -3,6 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package javaapplication3;
+import java.util.List; // Para List
+import javax.swing.table.DefaultTableModel; // Para DefaultTableModel
+
 
 /**
  *
@@ -118,7 +121,29 @@ public class PantallaMedicamentoPaciente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
-        // TODO add your handling code here:
+          // Obtener lista de pacientes con medicación
+    List<Modelo.Paciente> pacientesConMedicacion = controlador.obtenerPacientesConEnfermedadesConDosis();
+
+    // Crear un modelo para la tabla
+    DefaultTableModel tableModel = new DefaultTableModel(
+        new String[] {"MEDICACIÓN", "DATOS PACIENTE", "FRECUENCIA", "DOSIS"}, 0);
+
+    // Poblar la tabla con datos
+    for (Modelo.Paciente paciente : pacientesConMedicacion) {
+        for (Modelo.Enfermedad enfermedad : paciente.getEnfermedades()) {
+            if (enfermedad.tieneDosis()) {
+                tableModel.addRow(new Object[] {
+                    enfermedad.getMedicacion(),
+                    paciente.getNombre() + ", " + paciente.getEdad(),
+                    enfermedad.getFrecuencia(),
+                    enfermedad.getDosis()
+                });
+            }
+        }
+    }
+
+    // Establecer el modelo en la tabla
+    jTable1.setModel(tableModel);
     }//GEN-LAST:event_BuscarActionPerformed
 
     private void OkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OkActionPerformed
