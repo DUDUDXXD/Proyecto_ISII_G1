@@ -5,6 +5,8 @@
 package javaapplication3;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
+
+
 /**
  *
  * @author dudu
@@ -20,6 +22,7 @@ public class PantallaListaPacientes extends javax.swing.JFrame {
         this.controlador = controlador;
         initComponents();
         cargarPacientesEnTabla();
+  
     }
 
     /**
@@ -34,6 +37,7 @@ public class PantallaListaPacientes extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,14 +61,25 @@ public class PantallaListaPacientes extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setText("Ver Historial");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(34, Short.MAX_VALUE))
         );
@@ -74,7 +89,9 @@ public class PantallaListaPacientes extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
                 .addContainerGap(10, Short.MAX_VALUE))
         );
 
@@ -95,17 +112,22 @@ public class PantallaListaPacientes extends javax.swing.JFrame {
             });
         }
     }
+     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         SalirActionPerformed(evt);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+      int selectedRow = jTable1.getSelectedRow();
+        if (selectedRow != -1) {
+            // Obtener el valor del nombre del paciente (puedes adaptar esto según necesites)
+            String nombrePaciente = (String) jTable1.getValueAt(selectedRow, 0);
 
-     private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {                                          
-        // TODO add your handling code here:
-    }                                         
+            // Aquí puedes usar VistaManager para mostrar la pantalla del historial del paciente
+            vistaManager.mostrarPantallaHistorialPaciente();
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+                                       
 
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {                                      
         vistaManager.mostrarPantallaMedicos();
@@ -114,6 +136,7 @@ public class PantallaListaPacientes extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
