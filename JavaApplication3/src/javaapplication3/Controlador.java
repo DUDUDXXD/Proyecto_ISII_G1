@@ -13,6 +13,7 @@ import java.util.List;
  */
 public class Controlador {
     private Modelo.GestorDePacientes gestor;
+    private Modelo.GestorDeEnfermedades gestorenf;
     private Modelo.Enfermedad enf;
     private Modelo.Paciente pac;
     public Controlador(Modelo.GestorDePacientes gestor) {

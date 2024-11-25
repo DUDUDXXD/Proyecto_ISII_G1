@@ -4,171 +4,49 @@
  */
 package javaapplication3;
 
-import javax.swing.table.DefaultTableModel;
+import java.util.Date;
+import java.util.List;
+import javaapplication3.Modelo.GestorDeBotiquin;
+import javaapplication3.Modelo.Medicamento;
+import javaapplication3.Modelo.MedicamentoBotiquin;
 import javax.swing.JOptionPane;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author inesjasopernod
+ * @author pmare
  */
 public class PantallaListadoBotiquin extends javax.swing.JFrame {
-    private DefaultTableModel tableModel;
+
+    private GestorDeBotiquin gestorDeBotiquin;
     /**
      * Creates new form PantallaListadoBotiquin
      */
     public PantallaListadoBotiquin() {
         initComponents();
-        cargarDatosIniciales();
+        gestorDeBotiquin = new GestorDeBotiquin();
+        cargarTabla();
     }
     
-    private void initComponents() {
+    // Método para cargar la tabla con los medicamentos
+    private void cargarTabla() {
+        // Obtener los medicamentos del modelo
+        List<MedicamentoBotiquin> medicamentos = gestorDeBotiquin.obtenerMedicamentos();
+        
+        // Crear un modelo para la tabla
+        DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
+        tableModel.setRowCount(0); // Limpiar la tabla antes de cargar los datos
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        Inventario = new javax.swing.JTable();
-        Salir = new javax.swing.JButton();
-        Agregar = new javax.swing.JButton();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        // Configurar tabla con columnas: Medicamento, Existencias, Fecha Caducidad
-        tableModel = new DefaultTableModel(
-                new Object[]{"Medicamento", "Existencias", "Fecha de Caducidad"}, 0
-        );
-        Inventario.setModel(tableModel);
-        jScrollPane1.setViewportView(Inventario);
-
-        Salir.setText("Salir");
-        Salir.addActionListener(evt -> SalirActionPerformed(evt));
-
-        Agregar.setText("Agregar Medicamento");
-        Agregar.addActionListener(evt -> AgregarMedicamentoActionPerformed(evt));
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addGap(22, 22, 22)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addComponent(Agregar)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(Salir)))
-                                .addContainerGap(58, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addGap(21, 21, 21)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(Agregar)
-                                        .addComponent(Salir))
-                                .addContainerGap(9, Short.MAX_VALUE))
-        );
-
-        pack();
-    }
-
-    private void cargarDatosIniciales() {
-        // Datos de ejemplo
-        Object[][] medicamentos = {
-            {"Paracetamol", 5, "2024-01-01"},
-            {"Ibuprofeno", 12, "2023-12-01"},
-            {"Amoxicilina", 3, "2022-11-01"},
-            {"Loratadina", 20, "2025-06-15"}
-        };
-
-        // Agregar datos y verificar
-        for (Object[] medicamento : medicamentos) {
-            try {
-                agregarMedicamento((String) medicamento[0], (int) medicamento[1], (String) medicamento[2]);
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(
-                    this,
-                    e.getMessage(),
-                    "Error en el Medicamento",
-                    JOptionPane.ERROR_MESSAGE
-                );
-            }
+        // Recorrer los medicamentos y añadir los datos a la tabla
+        for (MedicamentoBotiquin medicamento : medicamentos) {
+            Object[] row = {
+                medicamento.getNombre(),
+                medicamento.getCantidad(),
+                medicamento.getFechaCaducidad()
+            };
+            tableModel.addRow(row);
         }
     }
-    
-    private void agregarMedicamento(String nombre, int existencias, String fechaCaducidad) throws Exception {
-        // Verificar existencias
-        if (existencias < 10) {
-            throw new Exception("El medicamento '" + nombre + "' tiene existencias bajas: " + existencias);
-        }
-
-        // Verificar caducidad
-        LocalDate fechaActual = LocalDate.now();
-        LocalDate fechaCad;
-        try {
-            fechaCad = LocalDate.parse(fechaCaducidad, DateTimeFormatter.ISO_LOCAL_DATE);
-        } catch (DateTimeParseException e) {
-            throw new Exception("Fecha de caducidad inválida para '" + nombre + "': " + fechaCaducidad);
-        }
-        if (fechaCad.isBefore(fechaActual)) {
-            throw new Exception("El medicamento '" + nombre + "' ya está caducado: " + fechaCaducidad);
-        }
-
-        // Agregar al modelo si pasa las verificaciones
-        tableModel.addRow(new Object[]{nombre, existencias, fechaCaducidad});
-    }
-    
-    private void AgregarMedicamentoActionPerformed(java.awt.event.ActionEvent evt) {
-        // Cuadros de diálogo para ingresar datos
-        String nombre = JOptionPane.showInputDialog(this, "Nombre del Medicamento:");
-        if (nombre == null || nombre.isBlank()) {
-            JOptionPane.showMessageDialog(this, "El nombre del medicamento no puede estar vacío.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        String existenciasStr = JOptionPane.showInputDialog(this, "Cantidad de Existencias:");
-        int existencias;
-        try {
-            existencias = Integer.parseInt(existenciasStr);
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "La cantidad debe ser un número entero.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        String fechaCaducidad = JOptionPane.showInputDialog(this, "Fecha de Caducidad (YYYY-MM-DD):");
-        if (fechaCaducidad == null || fechaCaducidad.isBlank()) {
-            JOptionPane.showMessageDialog(this, "La fecha de caducidad no puede estar vacía.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        // Intentar agregar medicamento y manejar excepciones
-        try {
-            agregarMedicamento(nombre, existencias, fechaCaducidad);
-            JOptionPane.showMessageDialog(this, "Medicamento agregado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage(), "Error al Agregar Medicamento", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-
-    private void SalirActionPerformed(java.awt.event.ActionEvent evt) {
-        System.exit(0);
-    }
-
-
-    /**
-     * Main para ejecutar la aplicación.
-     * @param args
-     */
-    public static void main(String[] args) {
-        java.awt.EventQueue.invokeLater(() -> {
-            new PantallaListadoBotiquin().setVisible(true);
-        });
-    }
-
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -180,12 +58,12 @@ public class PantallaListadoBotiquin extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        Inventario = new javax.swing.JTable();
-        Salir = new javax.swing.JButton();
+        jTable1 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Inventario.setModel(new javax.swing.table.DefaultTableModel(
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -193,15 +71,15 @@ public class PantallaListadoBotiquin extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "Medicamento", "Existencias", "Estado"
+                "MEDICAMENTO", "EXISTENCIAS", "FECHA CADUCIDAD"
             }
         ));
-        jScrollPane1.setViewportView(Inventario);
+        jScrollPane1.setViewportView(jTable1);
 
-        Salir.setText("Salir");
-        Salir.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText("Ver Incidencias");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SalirActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -210,34 +88,80 @@ public class PantallaListadoBotiquin extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(58, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Salir)
-                .addGap(24, 24, 24))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(Salir)
-                .addContainerGap(9, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(28, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(jButton1)
+                .addGap(25, 25, 25))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        // Verificar las advertencias
+        List<String> advertencias = gestorDeBotiquin.verificarMedicamentos();
         
-    }//GEN-LAST:event_SalirActionPerformed
+        // Mostrar advertencias si existen
+        if (!advertencias.isEmpty()) {
+            String mensaje = String.join("\n", advertencias);
+            JOptionPane.showMessageDialog(this, mensaje, "Advertencias", JOptionPane.WARNING_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Todos los medicamentos están en buen estado.", "Todo en orden", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(PantallaListadoBotiquin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(PantallaListadoBotiquin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(PantallaListadoBotiquin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(PantallaListadoBotiquin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new PantallaListadoBotiquin().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable Inventario;
-    private javax.swing.JButton Salir;
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

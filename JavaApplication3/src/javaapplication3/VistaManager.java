@@ -71,8 +71,8 @@ public class VistaManager {
         pantallaListaPacientes.setVisible(true);
     }
 
-    public void mostrarPantallaHistorialPaciente(){
-        PantallaHistorialPaciente pantallaHistorialPaciente = new PantallaHistorialPaciente();
+    public void mostrarPantallaHistorialPaciente(String nombrePaciente){
+        PantallaHistorialPaciente pantallaHistorialPaciente = new PantallaHistorialPaciente(nombrePaciente);
         pantallaHistorialPaciente.setVisible(true);
     }
     // Añadir más métodos para manejar otras pantallas si es necesario
