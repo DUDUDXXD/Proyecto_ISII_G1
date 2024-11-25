@@ -4,9 +4,16 @@
  */
 package javaapplication3;
 
+import java.awt.Component;
+import java.awt.event.ActionEvent;
 import javax.swing.JOptionPane;
 
 import javaapplication3.Modelo.Paciente;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 
 /**
  *
@@ -35,6 +42,8 @@ public class PantallaHistorialPaciente extends javax.swing.JFrame {
     private void initComponents() {
 
         Nombre = new javax.swing.JLabel();
+        Apellido_1 = new javax.swing.JLabel();
+        Apellido_2 = new javax.swing.JLabel();
         Historial = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -42,11 +51,22 @@ public class PantallaHistorialPaciente extends javax.swing.JFrame {
         Alta = new javax.swing.JButton();
         Salir = new javax.swing.JButton();
         Paciente = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        //Nombre.setText(paciente.getNombre());
-        Nombre.setText("Matias");
+        Nombre.setText("Matías");
+
+        Apellido_1.setText("Moncho");
+
+        Apellido_2.setText("Ronda");
 
         Historial.setText("Historial:");
 
@@ -86,6 +106,20 @@ public class PantallaHistorialPaciente extends javax.swing.JFrame {
 
         Paciente.setText("Paciente:");
 
+        jLabel1.setText("Fecha");
+
+        jLabel2.setText("DNI");
+
+        jLabel3.setText("Enfermedad");
+
+        jLabel4.setText("Tratamiento");
+
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -109,7 +143,27 @@ public class PantallaHistorialPaciente extends javax.swing.JFrame {
                         .addGap(29, 29, 29)
                         .addComponent(Apellido_1)
                         .addGap(18, 18, 18)
-                        .addComponent(Apellido_2)))
+                        .addComponent(Apellido_2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(64, 64, 64)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(44, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -130,7 +184,19 @@ public class PantallaHistorialPaciente extends javax.swing.JFrame {
                     .addComponent(Actualizar)
                     .addComponent(Alta)
                     .addComponent(Salir))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel3)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel4)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(99, Short.MAX_VALUE))
         );
 
         pack();
@@ -138,6 +204,24 @@ public class PantallaHistorialPaciente extends javax.swing.JFrame {
 
     private void ActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarActionPerformed
         // TODO add your handling code here:
+        String fecha = jTextField1.getText();
+    String dni = jTextField2.getText();
+    String enfermedad = jTextField3.getText();
+    String tratamiento = jTextField4.getText();
+
+    // Validar los campos (opcional)
+    if (fecha.isEmpty() || dni.isEmpty() || enfermedad.isEmpty() || tratamiento.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Añadir al historial del paciente
+    if (!paciente.añadirEntradaHistorial(fecha, dni, enfermedad, tratamiento)) {
+        JOptionPane.showMessageDialog(this, "Ya existe una entrada con la misma fecha y DNI", "Error", JOptionPane.ERROR_MESSAGE);
+    } else {
+        JOptionPane.showMessageDialog(this, "Entrada añadida correctamente al historial", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+    }
+    
     }//GEN-LAST:event_ActualizarActionPerformed
 
     private void AltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AltaActionPerformed
@@ -153,6 +237,10 @@ public class PantallaHistorialPaciente extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_SalirActionPerformed
 
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Actualizar;
     private javax.swing.JButton Alta;
@@ -162,7 +250,15 @@ public class PantallaHistorialPaciente extends javax.swing.JFrame {
     private javax.swing.JLabel Nombre;
     private javax.swing.JLabel Paciente;
     private javax.swing.JButton Salir;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
 }

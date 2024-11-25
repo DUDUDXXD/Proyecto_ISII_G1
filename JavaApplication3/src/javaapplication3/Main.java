@@ -24,7 +24,8 @@ public class Main {
                 VistaManager vistaManager = new VistaManager(); // Crear el gestor de vistas
 //                vistaManager.mostrarPantallaMedicamentoPaciente(); // Mostrar la pantalla inicial
                   //vistaManager.mostrarPantallaListaEnfermedades();
-                  vistaManager.mostrarPantallaLogin();
+                 // vistaManager.mostrarPantallaLogin();
+                  vistaManager.mostrarPantallaHistorialPaciente();
             }
         });
     }

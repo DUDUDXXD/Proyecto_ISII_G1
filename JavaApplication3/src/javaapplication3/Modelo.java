@@ -10,6 +10,7 @@ public class Modelo {
         private String nombre, sintom,apellidos;
         private int edad, hab;
         private List<Enfermedad> enfermedades;
+        private List<HistorialEntrada> historial;
 
         public Paciente() {
             this.nombre = "Sin asignar";
@@ -18,6 +19,7 @@ public class Modelo {
             this.hab = 0;
             this.sintom = "Sin asignar";
             this.enfermedades = new ArrayList<>();
+            this.historial = new ArrayList<>();
         }
 
         public Paciente(String nombre, String apellidos, int edad, int hab, String sintom) {
@@ -78,6 +80,21 @@ public class Modelo {
         public void setEnfermedades(List<Enfermedad> enfermedades) {
             this.enfermedades = enfermedades;
         }
+        
+        public List<HistorialEntrada> getHistorial() {
+            return historial;
+        }
+        
+        public boolean añadirEntradaHistorial(String fecha, String dni, String enfermedad, String tratamiento) {
+            for (HistorialEntrada entrada : historial) {
+                if (entrada.getFecha().equals(fecha) && entrada.getDni().equals(dni)) {
+                    return false; // Entrada duplicada
+                }
+            }
+            historial.add(new HistorialEntrada(fecha, dni, enfermedad, tratamiento));
+            return true; // Añadido correctamente
+        }
+        
     }
 
     // Clase Enfermedad
@@ -204,4 +221,33 @@ public class Modelo {
             return enfermedades;
         }
     }
+    public static class HistorialEntrada {
+    private String fecha;
+    private String dni;
+    private String enfermedad;
+    private String tratamiento;
+
+    public HistorialEntrada(String fecha, String dni, String enfermedad, String tratamiento) {
+        this.fecha = fecha;
+        this.dni = dni;
+        this.enfermedad = enfermedad;
+        this.tratamiento = tratamiento;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public String getDni() {
+        return dni;
+    }
+
+    public String getEnfermedad() {
+        return enfermedad;
+    }
+
+    public String getTratamiento() {
+        return tratamiento;
+    }
+}
 }
