@@ -20,7 +20,7 @@ public class Controlador {
     }
     public List<Modelo.Paciente> obtenerPacientesConEnfermedadesConDosis() {
         List<Modelo.Paciente> pacientesConMedicacion = new ArrayList<>();
-        for (Modelo.Paciente paciente : gestor.obtenerTodosLosPacientes()) {
+        for (Modelo.Paciente paciente : gestor.obtenerTodosLosPacientes()) {  // Ahora puedes acceder sin problemas
             boolean tieneMedicacion = false;
             for (Modelo.Enfermedad enfermedad : paciente.getEnfermedades()) {
                 if (enfermedad.tieneDosis()) {

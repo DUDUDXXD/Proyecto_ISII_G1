@@ -3,25 +3,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package javaapplication3;
-
-import java.util.ArrayList;
 import java.util.List;
-
-import javaapplication3.Modelo.GestorDePacientes;
-import javaapplication3.Modelo.Paciente;
-
+import javax.swing.table.DefaultTableModel;
 /**
  *
- * @author mmati
+ * @author dudu
  */
 public class PantallaListaPacientes extends javax.swing.JFrame {
     VistaManager vistaManager = new VistaManager();
-    Modelo modelo = new Modelo();
+    private Controlador controlador;
     /**
      * Creates new form PantallaListaPacientes
      */
-    public PantallaListaPacientes() {
+    public PantallaListaPacientes(Controlador controlador) 
+    {
+        this.controlador = controlador;
         initComponents();
+        cargarPacientesEnTabla();
     }
 
     /**
@@ -34,38 +32,28 @@ public class PantallaListaPacientes extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        TablaListaPacientes = new javax.swing.JTable();
-        Salir = new javax.swing.JButton();
-        VerDetalles = new javax.swing.JButton();
+        jTable1 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        TablaListaPacientes.setModel(new javax.swing.table.DefaultTableModel(
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Juan Perez", "13", "Nada"},
-                {"Maria Garcia", "14", "Dolor"},
-                {"Carlos Ruiz", "15", "Fiebre"},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Nombre", "Habitación", "Síntomas"
+                "nombre", "Apellido", "habitacion", "sintomas"
             }
         ));
-        jScrollPane1.setViewportView(TablaListaPacientes);
+        jScrollPane1.setViewportView(jTable1);
 
-        Salir.setText("Salir");
-        Salir.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText("salir");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SalirActionPerformed(evt);
-            }
-        });
-
-        VerDetalles.setText("Historial");
-        VerDetalles.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                VerDetallesActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -74,60 +62,59 @@ public class PantallaListaPacientes extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(VerDetalles)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Salir))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Salir)
-                    .addComponent(VerDetalles))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addGap(17, 17, 17)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    private void cargarPacientesEnTabla()
+    {
+        List<Modelo.Paciente> pacientes = controlador.obtenerPacientesConEnfermedadesConDosis();
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+        
+         for (Modelo.Paciente paciente : pacientes) {
+            model.addRow(new Object[]{
+                paciente.getNombre(),            // Nombre del paciente
+                paciente.getApellidos(),           // Puedes adaptar esta línea según los datos que tengas de los apellidos
+                paciente.getHab(),               // Número de habitación del paciente
+                paciente.getSintom()             // Síntomas del paciente
+            });
+        }
+    }
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        SalirActionPerformed(evt);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
+    /**
+     * @param args the command line arguments
+     */
+
+     private void RegistrarActionPerformed(java.awt.event.ActionEvent evt) {                                          
+        // TODO add your handling code here:
+    }                                         
+
+    private void SalirActionPerformed(java.awt.event.ActionEvent evt) {                                      
         vistaManager.mostrarPantallaMedicos();
         this.dispose();
-    }//GEN-LAST:event_SalirActionPerformed
-
-    private void VerDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerDetallesActionPerformed
-        //FALTA SELECCIONAR PACIENTE Y VER HISTORIAL DE PACIENTE SELECCIONADO
-        //int seleccion = TablaListaPacientes.getSelectedRow();
-        Paciente paciente = new Paciente();
-        //GestorDePacientes gPacientes = new GestorDePacientes();
-/*
-        List<Paciente> pacientes;
-        pacientes = gPacientes.obtenerTodosLosPacientes();
-        
-        if(seleccion >= 0 && seleccion < pacientes.size()){
-            paciente = pacientes.get(seleccion);
-        }
-        System.out.println(paciente.getNombre());
-        */
-        vistaManager.mostrarPantallaHistorialPaciente();
-        this.dispose();
-    }//GEN-LAST:event_VerDetallesActionPerformed
-
-
+    } 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Salir;
-    private javax.swing.JTable TablaListaPacientes;
-    private javax.swing.JButton VerDetalles;
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

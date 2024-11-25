@@ -10,23 +10,23 @@ public class VistaManager {
     private Modelo.GestorDePacientes gestor;
     private Controlador controlador;
     Modelo modelo = new Modelo();
-    private Paciente paciente;
+    
 
     public VistaManager() {
         // Inicializar el modelo y el controlador
         gestor = new Modelo.GestorDePacientes();
         controlador = new Controlador(gestor);
-        paciente = new Paciente();
+        
 
         // Añadir datos de prueba al modelo
-        Modelo.GestorDeEnfermedades.precargarEnfermedades();
-        Modelo.Paciente paciente1 = new Modelo.Paciente("Juan Perez", 65, 13, "Nada");
+       Modelo.GestorDeEnfermedades.precargarEnfermedades();
+        Modelo.Paciente paciente1 = new Modelo.Paciente("Juan","Perez", 65, 13, "Nada");
         Modelo.Enfermedad enfermedad1 = new Modelo.Enfermedad("Diabetes", "Insulina", "5ml", "Diario", true);
         paciente1.añadirEnfermedad(enfermedad1);
         gestor.añadirPaciente(paciente1);
     }
 
-    public void mostrarPantallaMedicamentoPaciente(){
+    public void mostrarPantallaMedicamentoPaciente() {
         PantallaMedicamentoPaciente pantallaMedicamentoPaciente = new PantallaMedicamentoPaciente(controlador);
         pantallaMedicamentoPaciente.setVisible(true);
     }
@@ -67,7 +67,7 @@ public class VistaManager {
     }
 
     public void mostrarPantallaListaPacientes(){
-        PantallaListaPacientes pantallaListaPacientes = new PantallaListaPacientes();
+        PantallaListaPacientes pantallaListaPacientes = new PantallaListaPacientes(controlador);
         pantallaListaPacientes.setVisible(true);
     }
 
