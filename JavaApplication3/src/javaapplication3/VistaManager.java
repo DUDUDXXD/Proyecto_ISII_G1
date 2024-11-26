@@ -16,6 +16,7 @@ public class VistaManager {
     public VistaManager() {
         // Inicializar el modelo y el controlador
         gestor = new Modelo.GestorDePacientes();
+        gestorEnfermedades = new Modelo.GestorDeEnfermedades();
         controlador = new Controlador(gestor);
         
 

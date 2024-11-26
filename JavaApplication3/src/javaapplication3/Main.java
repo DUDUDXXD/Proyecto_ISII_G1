@@ -22,10 +22,8 @@ public class Main {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 VistaManager vistaManager = new VistaManager(); // Crear el gestor de vistas
-//                vistaManager.mostrarPantallaMedicamentoPaciente(); // Mostrar la pantalla inicial
-                  //vistaManager.mostrarPantallaListaEnfermedades();
-                 // vistaManager.mostrarPantallaLogin();
-                  //vistaManager.mostrarPantallaHistorialPaciente();
+                vistaManager.mostrarPantallaLogin();
+                  
             }
         });
     }
