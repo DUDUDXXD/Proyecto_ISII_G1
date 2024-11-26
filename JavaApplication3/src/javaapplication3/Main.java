@@ -23,7 +23,6 @@ public class Main {
             public void run() {
                 VistaManager vistaManager = new VistaManager(); // Crear el gestor de vistas
                 vistaManager.mostrarPantallaLogin();
-                  
             }
         });
     }
