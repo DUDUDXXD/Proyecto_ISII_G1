@@ -49,7 +49,7 @@ public class PantallaListaPacientes extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "nombre", "Apellido", "habitacion", "sintomas"
+                "Nombre", "Apellido", "Habitacion", "Sintomas"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
