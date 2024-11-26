@@ -32,21 +32,18 @@ public class PantallaMedicamentoPaciente extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-<<<<<<< HEAD
         jList1 = new javax.swing.JList<>();
         label1 = new java.awt.Label();
         label2 = new java.awt.Label();
         label3 = new java.awt.Label();
         label4 = new java.awt.Label();
         jButton1 = new javax.swing.JButton();
-=======
         jTable1 = new javax.swing.JTable();
         Buscar = new javax.swing.JButton();
         Ok = new javax.swing.JButton();
         Salir = new javax.swing.JButton();
         Fecha = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
->>>>>>> 7fe409af471b492075bc5f765771f5a5ab4345d4
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -90,7 +87,6 @@ public class PantallaMedicamentoPaciente extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-<<<<<<< HEAD
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(99, 99, 99)
@@ -104,7 +100,6 @@ public class PantallaMedicamentoPaciente extends javax.swing.JFrame {
                     .addGap(123, 123, 123)
                     .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(48, 48, 48)))
-=======
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(Fecha)
@@ -113,7 +108,6 @@ public class PantallaMedicamentoPaciente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44))
->>>>>>> 7fe409af471b492075bc5f765771f5a5ab4345d4
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
@@ -128,7 +122,6 @@ public class PantallaMedicamentoPaciente extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-<<<<<<< HEAD
                 .addContainerGap()
                 .addComponent(jButton1)
                 .addGap(18, 18, 18)
@@ -141,7 +134,6 @@ public class PantallaMedicamentoPaciente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(52, Short.MAX_VALUE))
-=======
                 .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Buscar)
@@ -154,7 +146,6 @@ public class PantallaMedicamentoPaciente extends javax.swing.JFrame {
                     .addComponent(Ok)
                     .addComponent(Salir))
                 .addContainerGap())
->>>>>>> 7fe409af471b492075bc5f765771f5a5ab4345d4
         );
 
         pack();
@@ -199,15 +190,12 @@ public class PantallaMedicamentoPaciente extends javax.swing.JFrame {
 
     //**
     // Variables declaration - do not modify//GEN-BEGIN:variables
-<<<<<<< HEAD
     private javax.swing.JButton jButton1;
     private javax.swing.JList<String> jList1;
-=======
     private javax.swing.JButton Buscar;
     private javax.swing.JLabel Fecha;
     private javax.swing.JButton Ok;
     private javax.swing.JButton Salir;
->>>>>>> 7fe409af471b492075bc5f765771f5a5ab4345d4
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
