@@ -371,7 +371,7 @@ medicamentosBotiquin.add(new MedicamentoBotiquin("Simvastatina", 15, new Date(Sy
         }
 
         // Método para inicializar enfermedades
-        private void precargarEnfermedades() {
+        public void precargarEnfermedades() {
         enfermedades.add(new Enfermedad("Gripe", "Paracetamol", "500mg", "2 veces al día", true));
         enfermedades.add(new Enfermedad("Covid-19", "Antivirales", "200mg", "1 vez al día", true));
         enfermedades.add(new Enfermedad("Migraña", "Ibuprofeno", "400mg", "1 vez cada 8 horas", false));

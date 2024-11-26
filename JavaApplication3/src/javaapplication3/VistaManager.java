@@ -8,6 +8,7 @@ import javaapplication3.Modelo.Paciente;
 
 public class VistaManager {
     private Modelo.GestorDePacientes gestor;
+    private Modelo.GestorDeEnfermedades gestorEnfermedades;
     private Controlador controlador;
     Modelo modelo = new Modelo();
     
@@ -19,7 +20,7 @@ public class VistaManager {
         
 
         // Añadir datos de prueba al modelo
-       Modelo.GestorDeEnfermedades.precargarEnfermedades();
+        gestorEnfermedades.precargarEnfermedades();
         Modelo.Paciente paciente1 = new Modelo.Paciente("Juan","Perez", 65, 13, "Nada");
         Modelo.Enfermedad enfermedad1 = new Modelo.Enfermedad("Diabetes", "Insulina", "5ml", "Diario", true);
         paciente1.añadirEnfermedad(enfermedad1);

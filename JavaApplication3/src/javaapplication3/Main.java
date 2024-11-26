@@ -25,7 +25,7 @@ public class Main {
 //                vistaManager.mostrarPantallaMedicamentoPaciente(); // Mostrar la pantalla inicial
                   //vistaManager.mostrarPantallaListaEnfermedades();
                  // vistaManager.mostrarPantallaLogin();
-                  vistaManager.mostrarPantallaHistorialPaciente();
+                  //vistaManager.mostrarPantallaHistorialPaciente();
             }
         });
     }

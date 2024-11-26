@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package javaapplication3;
+import java.awt.Label;
 import java.util.List; // Para List
 import javax.swing.table.DefaultTableModel; // Para DefaultTableModel
 
@@ -14,6 +15,10 @@ import javax.swing.table.DefaultTableModel; // Para DefaultTableModel
 public class PantallaMedicamentoPaciente extends javax.swing.JFrame {
     VistaManager vistaManager = new VistaManager();
     private Controlador controlador;
+    private Label label1;
+    private Label label2;
+    private Label label3;
+    private Label label4;
     /**
      * Creates new form PantallaBuscarMedicamentos
      */

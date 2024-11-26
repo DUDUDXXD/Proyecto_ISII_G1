@@ -124,7 +124,7 @@ public class PantallaListaPacientes extends javax.swing.JFrame {
             String nombrePaciente = (String) jTable1.getValueAt(selectedRow, 0);
 
             // Aquí puedes usar VistaManager para mostrar la pantalla del historial del paciente
-            vistaManager.mostrarPantallaHistorialPaciente();
+            vistaManager.mostrarPantallaHistorialPaciente(nombrePaciente);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
                                        
