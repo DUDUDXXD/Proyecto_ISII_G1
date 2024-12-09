@@ -180,10 +180,11 @@ private void actualizarTabla(Object[][] datos) {
 }
     
     
-    
+   
     /**
      * @param args the command line arguments
      */
+/**
     public static void main(String args[]) {
         // Ejecutar la aplicación
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -192,7 +193,7 @@ private void actualizarTabla(Object[][] datos) {
             }
         });
     }
-
+**/
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
