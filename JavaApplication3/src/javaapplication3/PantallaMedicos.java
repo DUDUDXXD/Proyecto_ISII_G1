@@ -116,7 +116,7 @@ public class PantallaMedicos extends javax.swing.JFrame {
     }//GEN-LAST:event_ListaPacientesActionPerformed
 
     private void MedicamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MedicamentosActionPerformed
-        vistaManager.mostrarPantallaListaMedicamentos();
+        vistaManager.mostrarPantallaBuscarMedicamentos();
         this.dispose();
     }//GEN-LAST:event_MedicamentosActionPerformed
 
